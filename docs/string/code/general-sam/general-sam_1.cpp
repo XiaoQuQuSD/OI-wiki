@@ -8,8 +8,7 @@ struct exSAM {
   int link[MAXN];            // 后缀链接，link
   int next[MAXN][CHAR_NUM];  // 转移
   int tot;                   // 节点总数：[0, tot)
-
-  void init() {  // 初始化函数
+  void init() {              // 初始化函数
     tot = 1;
     link[0] = -1;
   }

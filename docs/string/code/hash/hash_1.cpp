@@ -12,7 +12,6 @@ struct StringWithHash {
   int ls;
   int hsh[HASH_CNT][L];
   int pwMod[HASH_CNT][L];
-
   void init() {  // 初始化
     ls = 0;
     for (int i = 0; i < HASH_CNT; ++i) {
@@ -31,7 +30,6 @@ struct StringWithHash {
       hsh[i][ls] = (1ll * hsh[i][ls - 1] * hashBase[i] + c) % hashMod[i];
     }
   }
-
   vector<int> getHash(int l, int r) {  // 得到哈希值
     vector<int> res(HASH_CNT, 0);
     for (int i = 0; i < HASH_CNT; ++i) {

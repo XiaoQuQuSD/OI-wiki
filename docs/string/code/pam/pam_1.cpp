@@ -6,7 +6,6 @@ namespace pam {
 int sz, tot, last;
 int cnt[maxn], ch[maxn][26], len[maxn], fail[maxn];
 char s[maxn];
-
 int node(int l) {  // 建立一个新节点，长度为 l
   sz++;
   memset(ch[sz], 0, sizeof(ch[sz]));
@@ -14,7 +13,6 @@ int node(int l) {  // 建立一个新节点，长度为 l
   fail[sz] = cnt[sz] = 0;
   return sz;
 }
-
 void clear() {  // 初始化
   sz = -1;
   last = 0;
@@ -23,12 +21,10 @@ void clear() {  // 初始化
   node(-1);
   fail[0] = 1;
 }
-
 int getfail(int x) {  // 找后缀回文
   while (s[tot - len[x] - 1] != s[tot]) x = fail[x];
   return x;
 }
-
 void insert(char c) {  // 建树
   s[++tot] = c;
   int now = getfail(last);

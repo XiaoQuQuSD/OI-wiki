@@ -30,7 +30,6 @@ struct treap {  // 直接维护成数据结构，可以直接用
     pushup(k);
     k = t;
   }
-
   void insert(int &k, int x) {  // 插入
     if (!k) {
       sz++;

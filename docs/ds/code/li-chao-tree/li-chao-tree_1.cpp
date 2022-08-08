@@ -30,19 +30,31 @@ void add(int x0, int y0, int x1, int y1) {
   else
     p[cnt].k = 1.0 * (y1 - y0) / (x1 - x0), p[cnt].b = y0 - p[cnt].k * x0;
 }
-
-void upd(int root, int cl, int cr, int u) {  // 对线段完全覆盖到的区间进行修改
-  int &v = s[root], mid = (cl + cr) >> 1;
-  if (cmp(calc(u, mid), calc(v, mid)) == 1) swap(u, v);
-  int bl = cmp(calc(u, cl), calc(v, cl)), br = cmp(calc(u, cr), calc(v, cr));
-  if (bl == 1 || (!bl && u < v)) upd(root << 1, cl, mid, u);
-  if (br == 1 || (!br && u < v)) upd(root << 1 | 1, mid + 1, cr, u);
-}
-
-void update(int root, int cl, int cr, int l, int r,
-            int u) {  // 定位插入线段完全覆盖到的区间
+void update(int root, int cl, int cr, int l, int r, int u) {  // 更新值
+  int v = s[root], mid = (cl + cr) >> 1;
+  int ls = root << 1, rs = root << 1 | 1;
+  double resu = calc(u, mid), resv = calc(v, mid);
+  if (r < cl || cr < l) return;  // 区间问题
   if (l <= cl && cr <= r) {
-    upd(root, cl, cr, u);
+    if (cl == cr) {
+      if (resu > resv) s[root] = u;
+      return;
+    }  // 从此之下都是分段更新
+    if (p[v].k < p[u].k) {
+      if (resu > resv) {
+        s[root] = u;
+        update(ls, cl, mid, l, r, v);
+      } else
+        update(rs, mid + 1, cr, l, r, u);
+    } else if (p[v].k > p[u].k) {
+      if (resu > resv) {
+        s[root] = u;
+        update(rs, mid + 1, cr, l, r, v);
+      } else
+        update(ls, cl, mid, l, r, u);
+    } else {
+      if (p[u].b > p[v].b) s[root] = u;
+    }
     return;
   }
   int mid = (cl + cr) >> 1;
@@ -58,7 +70,6 @@ pdi pmax(pdi x, pdi y) {  // pair max函数
   else
     return x.second < y.second ? x : y;
 }
-
 pdi query(int root, int l, int r, int d) {  // 查询
   if (r < d || d < l) return {0, 0};
   int mid = (l + r) >> 1;

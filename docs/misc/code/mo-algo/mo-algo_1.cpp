@@ -11,7 +11,6 @@ long long ans1[N], ans2[N];
 
 struct query {
   int l, r, id;
-
   bool operator<(const query &x) const {  // 重载<运算符
     if (l / maxn != x.l / maxn) return l < x.l;
     return (l / maxn) & 1 ? r < x.r : r > x.r;

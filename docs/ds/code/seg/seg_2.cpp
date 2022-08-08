@@ -102,7 +102,6 @@ ll getans(int l, int r, int s, int t,
   if (mid + 1 <= r) tot += getans(l, r, mid + 1, t, (i << 1) | 1);
   return tot % mod;
 }
-
 int main() {  // 读入
   int i, j, x, y, bh;
   ll z;

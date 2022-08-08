@@ -7,7 +7,6 @@ struct edge {
 } e[6005];
 
 int head[6005], n, cnt, f[6005][2], ans, is_h[6005], vis[6005];
-
 void addedge(int u, int v) {  // 建图
   e[++cnt].v = v;
   e[cnt].next = head[u];

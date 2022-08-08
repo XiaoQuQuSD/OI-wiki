@@ -18,7 +18,6 @@ void add(int l, int r, long long x) {  // 区间加法
   for (int i = r; id[i] == eid; i--) a[i] += x, s[eid] += x;
   // 以上两行不完整的块直接简单求和,就OK
 }
-
 long long query(int l, int r, long long p) {  // 区间查询
   int sid = id[l], eid = id[r];
   long long ans = 0;

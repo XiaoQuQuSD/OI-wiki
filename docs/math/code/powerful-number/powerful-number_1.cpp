@@ -13,11 +13,7 @@ inline int mint(T x) {
 inline int add(int x, int y) { return x + y >= MOD ? x + y - MOD : x + y; }
 
 inline int mul(int x, int y) { return (long long)1 * x * y % MOD; }
-
-inline int sub(int x, int y) {
-  return x < y ? x - y + MOD : x - y;
-}  // 防止负数
-
+inline int sub(int x, int y) { return x < y ? x - y + MOD : x - y; }  // 防止负数
 inline int qp(int x, int y) {
   int r = 1;
   for (; y; y >>= 1) {

@@ -14,9 +14,7 @@ inline int mint(T x) {
 inline int add(int x, int y) {
   return x + y >= MOD ? x + y - MOD : x + y;
 }  // 防止大于模数
-
 inline int mul(int x, int y) { return (long long)1 * x * y % MOD; }
-
 inline int sub(int x, int y) { return x < y ? x - y + MOD : x - y; }  // 防负数
 
 namespace PNS {

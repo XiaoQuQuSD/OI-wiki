@@ -33,10 +33,8 @@ struct node {
 
   bool operator<(node x) const { return t + h(a) > x.t + h(x.a); }
 } x;
-
 priority_queue<node> q;  // 搜索队列
 set<matrix> s;           // 防止搜索队列重复
-
 int main() {
   st.a[1][1] = 1;  // 定义标准表
   st.a[1][2] = 2;

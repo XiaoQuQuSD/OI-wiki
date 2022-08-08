@@ -16,7 +16,6 @@ struct data {
 
 int n;
 bool tr;
-
 // 底下是重写比较
 inline bool cmp1(const data& a, const data& b) {
   if (tr)

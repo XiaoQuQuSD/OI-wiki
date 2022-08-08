@@ -32,7 +32,6 @@ template <typename _Tp>
 inline int div2(const _Tp &x) {
   return ((x & 1) ? x + mod : x) >> 1;
 }
-
 // 以上目的均为防负数和取模
 template <typename _Tp>
 inline long long sqrll(const _Tp &x) {  // 平方函数
